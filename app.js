@@ -3,7 +3,7 @@ let td= document.querySelectorAll("td");
 let value ="";
 
 for(let x=1; x<td.length; x++){
-    td[x].addEventListener("click",()=>{
+    td[x].addEventListener("click",function(){
 
         //start -->
 
@@ -22,7 +22,7 @@ for(let x=1; x<td.length; x++){
                 value=value.slice(0,-1);
                 output.innerText=value;
                }
-        }
+            }
 
            if(newOne=="="){
             let one=value.slice(-1);
@@ -35,12 +35,11 @@ for(let x=1; x<td.length; x++){
         }
 
         }else{
-            if(newOne=='+' || newOne=='+' || newOne=='-' || newOne=='*' || newOne=='/'){
+            if(newOne=='+' || newOne=='-' || newOne=='*' || newOne=='/'){
                 if(value==''){
                     alert("Something Wrong");
                 }else{
                     let checktwo= value.slice(-1);
-                    let cutlast;
                     if(checktwo=='+' || checktwo=='+' || checktwo=='-' || checktwo=='*' || checktwo=='/'){
                         if(newOne=='+' ){
                         cutlast= value.slice(0,-1);
@@ -80,18 +79,24 @@ for(let x=1; x<td.length; x++){
                 }else if(highest== -1){
                     let checkonce= value.includes(".");
                     if(checkonce==true){
-                        alert("something Wrong");
+                        alert("Something Wrong");
                     }else{
                         screen(newOne);
                     }
 
                 }else if(newcheckfordot=='.'){
-                    alert("something Wrong");
+                    alert("Something Wrong");
                 }else{
                     if(test2ndtime !== -1){
                         alert("Something Wrong");
                     }else{
-                        screen(newOne);
+                        if(isNaN(newcheckfordot)){
+                            newOne='0.'
+                            screen(newOne);
+                        }else{
+                            screen(newOne);
+                        }
+                        
                     }
                     
                 }
